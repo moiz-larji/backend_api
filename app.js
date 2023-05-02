@@ -2,9 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose')
 const eventRoute = require('./routes/route')
+const dotenv = require("dotenv")
+dotenv.config()
 const app = express();
 
-mongoose.connect('mongodb+srv://moizlarjiml:test123123@mongapi.lw4qzcb.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect(`mongodb+srv://${process.env.DB_username}:${process.env.DB_password}@mongapi.lw4qzcb.mongodb.net/?retryWrites=true&w=majority`)
 
 
 mongoose.connection.on('error', err => {
